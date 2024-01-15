@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rps_game/bloc/game_bloc.dart';
+
+import 'ui/play_game_tab.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +14,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Búa Kéo Bao',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GameBloc>(create: (context){
+          return GameBloc();
+        })
+      ],
+      child: MaterialApp(
+        title: 'Búa Kéo Bao',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const DefaultTabController(length: 2, child: MyHomePage()),
       ),
-      home: const DefaultTabController(length: 2, child: MyHomePage()),
     );
   }
 }
@@ -40,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Tab(icon: Icon(Icons.list_rounded))
       ]),),
       body: const TabBarView(children: [
-        Placeholder(),
+        PlayGameTab(),
         Placeholder()
       ]),
     );

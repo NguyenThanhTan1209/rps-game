@@ -29,3 +29,4 @@ class GameProvider {
 // commit in test
 // commit in develop
 // commit in staging
+// commit in master

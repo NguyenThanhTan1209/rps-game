@@ -24,9 +24,3 @@ class GameProvider {
     (userChoice == GameChoice.rock && opponentChoice == GameChoice.scissors);
   }
 }
-
-// add comment
-// commit in test
-// commit in develop
-// commit in staging
-// commit in master

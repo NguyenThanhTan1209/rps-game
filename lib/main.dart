@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path/path.dart';
 import 'package:rps_game/bloc/game_bloc.dart';
+import 'package:rps_game/bloc/list_score_bloc.dart';
+import 'package:rps_game/ui/tab/list_score_tab.dart';
+import 'package:sqflite/sqflite.dart';
 
-import 'ui/play_game_tab.dart';
+import 'ui/tab/play_game_tab.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -18,7 +23,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<GameBloc>(create: (context){
           return GameBloc();
-        })
+        }),
+        BlocProvider<ListScoreBloc>(create: (context){
+          return ListScoreBloc();
+        }),
       ],
       child: MaterialApp(
         title: 'Búa Kéo Bao',
@@ -52,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ]),),
       body: const TabBarView(children: [
         PlayGameTab(),
-        Placeholder()
+        ListScoreTab()
       ]),
     );
   }

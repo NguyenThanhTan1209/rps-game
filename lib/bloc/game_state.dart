@@ -11,6 +11,10 @@ abstract class GameState {
 class GameInitialState extends GameState {
   GameInitialState():super(gameMatch: GameMatch(myChoice: GameChoice.paper, opponentChoice: GameChoice.paper, result: 'none'));
 }
+class GameLoadingState extends GameState {
+  GameLoadingState(): super(gameMatch: GameMatch(myChoice: GameChoice.none, opponentChoice: GameChoice.none, result: 'none'));
+}
+
 class GameWinState extends GameState {
   GameWinState({required super.gameMatch});
 }

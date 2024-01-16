@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/game_match.dart';
+import '../../data/game_match.dart';
 
 class OptionWidget extends StatelessWidget {
   final GameChoice choice;
